@@ -1,0 +1,117 @@
+<html>
+	<head></head>
+	<body onload="startTimer()" >
+		<style>
+			body {
+				margin: 0;
+				padding: 10px 20px;
+				background-color: black;
+				
+			}
+			p {
+				color: white;
+				font-size: 28px;
+				font-family: sans-serif;
+				margin-bottom: 6px;
+				margin-left: 10px;
+			}
+			.glow-on-hover {
+	width: 120px;
+	height: 30px;
+	border: none;
+	outline: none;
+	color: #fff;
+	background: #111;
+	cursor: pointer;
+	position: relative;
+	z-index: 0;
+	border-radius: 10px;
+}
+
+.glow-on-hover:before {
+	content: '';
+	background: linear-gradient(
+		45deg,
+		#ff0000,
+		#ff7300,
+		#fffb00,
+		#48ff00,
+		#00ffd5,
+		#002bff,
+		#7a00ff,
+		#ff00c8,
+		#ff0000
+	);
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	background-size: 400%;
+	z-index: -1;
+	filter: blur(5px);
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+	animation: glowing 20s linear infinite;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	border-radius: 10px;
+}
+
+.glow-on-hover:active {
+	color: #000;
+}
+
+.glow-on-hover:active:after {
+	background: transparent;
+}
+
+.glow-on-hover:hover:before {
+	opacity: 1;
+}
+
+.glow-on-hover:after {
+	z-index: -1;
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #111;
+	left: 0;
+	top: 0;
+	border-radius: 10px;
+}
+
+@keyframes glowing {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 400% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}	
+
+		</style>
+		  <div class="container" style="display: flex; justify-content: center; margin:0;">
+			<h1 id="display" style="color:white; margin:0">00:00:00</h1>
+		</div>
+		<div class="f" style="display: flex; align-items: baseline; justify-content: center; margin: 0;   ">
+			<p>
+				<span>Puntuacio:</span>
+				<span id="punts">0</span>
+			</p>
+			<p>
+				<span>Vides:</span>
+				<span id="vides">3</span>
+			</p>
+			<p id="gameover" style="color: red"></p>
+			<button onclick="resetejar()" type=button class="glow-on-hover" style="margin:1%" >Reiniciar</button>
+		</div>
+		<div style="display: flex; justify-content: center; align-items: center;">
+			<canvas></canvas>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+		<script src="/js.js"></script>
+	</body>
+</html>
